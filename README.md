@@ -4,6 +4,17 @@
 
 It lets you register services with a health check endpoint and automatically pings them at configurable intervals, displaying real-time status in a simple web UI.
 
+<details>
+  <summary>Full Page Sample</summary>
+  <br>
+  <div align="center">
+    <img src="sample-files/DEMO_tab1.png" alt="DEMO_tab1 img" style="width: 75%; max-width: 50px; height: auto;" />
+  </div>
+  <div align="center">
+    <img src="sample-files/DEMO_tab2.png" alt="DEMO_tab1 img" style="width: 75%; max-width: 50px; height: auto;" />
+  </div>
+</details>
+
 ---
 
 ### Start the Application
