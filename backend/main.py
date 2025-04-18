@@ -1,8 +1,6 @@
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException
 from models import Service
 from registry import register_service, get_services, ping_services
-import yaml
 
 app = FastAPI(title="Pulse Check – Service Registry")
 
