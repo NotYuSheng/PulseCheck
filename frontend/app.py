@@ -1,8 +1,7 @@
 import streamlit as st
 import requests
-import yaml
 import os
-import time
+import validators
 from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 
@@ -60,17 +59,18 @@ async def health_check():
         submitted = st.form_submit_button("Register")
 
         if submitted:
+            full_url = healthcheck_url.strip()
+
+            # Add http:// if not present for validation
+            if full_url and not full_url.startswith("http://") and not full_url.startswith("https://"):
+                full_url = "http://" + full_url
+
             if not healthcheck_url:
                 st.error("Please provide a valid IP address, domain, and optional path.")
+            elif not validators.url(full_url):
+                st.error("Please provide a valid URL.")
             else:
-                # Build the full URL safely
-                full_url = healthcheck_url.strip()
-                if full_url and not full_url.startswith("http://") and not full_url.startswith("https://"):
-                    full_url = "http://" + full_url
-
-                # Show preview of what will be registered
-                if full_url:
-                    st.markdown(f"📡 Will register health check at: `{full_url}`")
+                st.markdown(f"📡 Will register health check at: `{full_url}`")
 
                 payload = {
                     "name": name,
@@ -90,8 +90,8 @@ async def health_check():
                             st.error(f"❌ Failed to register: {error_detail}")
                         except json.JSONDecodeError:
                             st.error(f"❌ Failed to register: {resp.text}")
-
-
+                except Exception as e:
+                    st.error(f"⚠️ Error: {e}")
 
 with tab2:
     st.subheader("📡 Registered Services")
