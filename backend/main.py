@@ -22,7 +22,10 @@ async def ping():
 
 @app.delete("/services/{name}")
 async def delete_service(name: str):
+    from registry import services, remove_service # Import the services dict
+
     if name not in services:
         raise HTTPException(status_code=404, detail="Service not found")
     remove_service(name)
+    return {"message": f"Service '{name}' removed."}
     return {"message": f"Service '{name}' removed."}
