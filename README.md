@@ -11,7 +11,7 @@ It lets you register services with a health check endpoint and automatically pin
     <img src="sample-files/DEMO_tab1.png" alt="DEMO_tab1 img" style="width: 75%; max-width: 50px; height: auto;" />
   </div>
   <div align="center">
-    <img src="sample-files/DEMO_tab2.png" alt="DEMO_tab1 img" style="width: 75%; max-width: 50px; height: auto;" />
+    <img src="sample-files/DEMO_tab2.png" alt="DEMO_tab2 img" style="width: 75%; max-width: 50px; height: auto;" />
   </div>
 </details>
 
