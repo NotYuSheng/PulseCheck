@@ -44,6 +44,6 @@ def ping_services():
         try:
             response = requests.get(url, timeout=2)
             services[name]["status"] = "healthy" if response.status_code == 200 else "unhealthy"
-        except Exception:
+        except requests.exceptions.RequestException:
             services[name]["status"] = "unreachable"
     _save_services()
