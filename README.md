@@ -4,7 +4,6 @@
 
 It lets you register services with a health check endpoint and automatically pings them at configurable intervals, displaying real-time status in a simple web UI.
 
-
 ---
 
 ### Start the Application
