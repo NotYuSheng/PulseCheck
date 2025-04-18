@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import os
 import validators
+import json
 from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 
@@ -116,7 +117,7 @@ with tab2:
             try:
                 requests.get(f"{BACKEND_URL}/ping")
             except Exception as e:
-                st.warning("⚠️ Auto-ping failed.")
+                st.warning(f"⚠️ Auto-ping failed: {e}")
 
         services = requests.get(f"{BACKEND_URL}/services").json()
 
