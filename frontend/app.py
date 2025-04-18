@@ -85,9 +85,13 @@ async def health_check():
                         st.success("✅ Service registered successfully!")
                         st.json(payload)
                     else:
-                        st.error(f"❌ Failed to register: {resp.text}")
-                except Exception as e:
-                    st.error(f"⚠️ Error: {e}")
+                        try:
+                            error_detail = resp.json().get("detail", resp.text)
+                            st.error(f"❌ Failed to register: {error_detail}")
+                        except json.JSONDecodeError:
+                            st.error(f"❌ Failed to register: {resp.text}")
+
+
 
 with tab2:
     st.subheader("📡 Registered Services")
