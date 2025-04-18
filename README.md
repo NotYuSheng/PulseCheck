@@ -10,7 +10,9 @@ It lets you register services with a health check endpoint and automatically pin
 
 Run the following command to build and start the containers:  
 
-```docker compose up -d```
+```bash
+docker compose up -d
+```
 
 This will: 
 
@@ -70,7 +72,7 @@ make to the code will automatically reflect in the running containers.
 To stop the application, press `Ctrl+C` or run the following command:  
 
 ```bash
-docker-compose down  
+docker compose down  
 ```
 
 This will stop and remove the containers, but the built images will remain.  
