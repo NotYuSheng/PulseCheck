@@ -1,0 +1,28 @@
+services:
+  pulse-backend:
+    build:
+      context: ./backend
+    container_name: pulse-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./services_data:/app/services_data
+    networks:
+      - pulse-net
+
+  pulse-frontend:
+    build:
+      context: ./frontend
+    container_name: pulse-frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - pulse-backend
+    environment:
+      - BACKEND_URL=http://pulse-backend:8000
+    networks:
+      - pulse-net
+
+networks:
+  pulse-net:
+    driver: bridge
